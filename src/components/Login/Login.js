@@ -22,7 +22,6 @@ const Login = () => {
             const signedInUser = {name: displayName, email} 
             setLoggedInUser(signedInUser);
             jwtToken()
-            history.replace(from);
             // ...
           }).catch(function(error) {
             const errorMessage = error.message;
@@ -33,6 +32,7 @@ const Login = () => {
         firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
         .then(function(idToken) {
             sessionStorage.setItem('userToken' , idToken)
+            history.replace(from); // redirect to 
         //    console.log(idToken);
           }).catch(function(error) {
             // Handle error
